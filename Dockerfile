@@ -1,4 +1,4 @@
-FROM nvidia/cuda:9.1-cudnn7-devel-ubuntu16.04
+FROM nvidia/cuda:12.1.0-runtime-ubuntu22.04
 ENV ANACONDA /opt/anaconda3
 ENV CUDA_PATH /usr/local/cuda
 ENV PATH ${ANACONDA}/bin:${CUDA_PATH}/bin:$PATH
@@ -20,9 +20,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
          axel \
          zip \
          unzip
-RUN wget https://repo.continuum.io/archive/Anaconda3-5.0.1-Linux-x86_64.sh -P /tmp
-RUN bash /tmp/Anaconda3-5.0.1-Linux-x86_64.sh -b -p $ANACONDA
-RUN rm /tmp/Anaconda3-5.0.1-Linux-x86_64.sh -rf
+RUN wget https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh -P /tmp
+RUN bash /tmp/Anaconda3-2024.02-1-Linux-x86_64.sh -b -p $ANACONDA
+RUN rm /tmp/Anaconda3-2024.02-1-Linux-x86_64.sh -rf
 RUN conda install -y pytorch=0.4.1 torchvision cuda91 -c pytorch
 RUN conda install -y -c anaconda pip 
 RUN conda install -y -c menpo opencv3
